@@ -41,3 +41,5 @@ $router->post('/register-form', [$Register_Controller, 'registerUser']);
 
 //route pour la page de formulaire de information
 $router->post('/accueil', [$FormulaireController, 'appliquerInfoFormulaire']);
+$router->post('/ajout-form',[$Register_Controller,'ajoutPanier']);
+// $router->get('/panier-page',[,])

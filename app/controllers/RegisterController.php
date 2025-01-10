@@ -45,5 +45,9 @@ class RegisterController {
         
         Flight::render('accueil',['datacadeau'=>$datacadeau]);
     }
+
+    public function ajoutPanierController(){
+        
+    }
   
 }
