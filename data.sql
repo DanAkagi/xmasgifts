@@ -5,7 +5,8 @@ CREATE TABLE cadeau (
     idCadeau INT AUTO_INCREMENT PRIMARY KEY,
     categorieCadeau VARCHAR(255) NOT NULL,
     nomCadeau VARCHAR(255) NOT NULL,
-    prix INT NOT NULL
+    prix INT NOT NULL, 
+    
 );
 
 CREATE TABLE user (
