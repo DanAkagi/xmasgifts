@@ -62,9 +62,7 @@ INSERT INTO cadeau (idCadeau, categorieCadeau, nomCadeau, prix, image_url) VALUE
 (86, 'neutre', 'Jeu de cartes', 8, '/assets/images/neutre6.jpg'),
 (87, 'neutre', 'Microscope enfant', 65, '/assets/images/neutre7.jpg'),
 (88, 'neutre', 'Pâte à modeler', 12, '/assets/images/neutre8.jpg'),
-(89, 'neutre', 'Instrument musique', 42, '/assets/images/neutre9.jpg'),
-(90, 'neutre', 'Kit jardinage', 25, '/assets/images/neutre10.jpg');
-
+(89, 'neutre', 'cartable', 20, '/assets/images/neutre.jpg'),
 
 -- Insertion des données dans la table user
 INSERT INTO user (nomUser, mdp) VALUES
