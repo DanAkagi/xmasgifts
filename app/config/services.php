@@ -8,6 +8,9 @@ use Tracy\Debugger;
 use app\models\Formulaire;
 use app\models\Cadeau;
 use app\models\Depot;
+use app\models\LoginModel;
+use app\models\RegisterModel;
+
 
 
 /** 
@@ -43,3 +46,20 @@ Flight::map('Formulaire', function(){
 Flight::map('Cadeau', function(){
     return new Cadeau(Flight::db());
 });
+
+//Squi
+
+Flight::map('loginModel', function() {
+    return new LoginModel(Flight::db());
+});
+
+
+// Dans services.php, ajoutez :
+Flight::map('registerModel', function() {
+    return new RegisterModel(Flight::db());
+});
+
+Flight::map('verifyInformationModel',function(){
+    return new RegisterModel(Flight::db());
+});
+
