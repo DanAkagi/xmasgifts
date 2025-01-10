@@ -16,6 +16,6 @@ class FormulaireController {
         $montant = Flight::request()->data->montant;
 
         $result = Flight::formulaire()->chercherCadeau($id, $montant);
-        Flight::render('genererCadeau', ['listeCadeau' => $result]);
+        Flight::render('accueil', ['datacadeau' => $result]);
     }
 }

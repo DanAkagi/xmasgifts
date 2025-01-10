@@ -4,7 +4,6 @@ namespace app\models;
 use flight\Engine;
 use Flight;
 
-session_start();
 
 class Cadeau {
     private $db;

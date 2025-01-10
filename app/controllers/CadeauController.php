@@ -5,7 +5,6 @@ use app\models\Cadeau;
 use flight\Engine;
 use Flight;
 
-session_start();
 
 class CadeauController {
 

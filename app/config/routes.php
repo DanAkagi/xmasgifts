@@ -35,4 +35,4 @@ $router->get('/register', [$Register_Controller, 'showRegister']);
 $router->post('/register-form', [$Register_Controller, 'registerUser']);
 
 //route pour la page de formulaire de information
-$router->post('/accueil', [$Register_Controller, 'verifyInformation']);
+$router->post('/accueil', [$FormulaireController, 'appliquerInfoFormulaire']);
