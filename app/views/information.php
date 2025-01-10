@@ -12,11 +12,11 @@
         <form id="loginForm" method="POST" action="/accueil">
             <div class="form-group">
                 <label for="nomuser" class="form-label">Nombre de fille </label>
-                <input type="number" id="nbrfille" name="nombreFille" class="form-input" required>
+                <input type="number" id="nbrfille" name="nombreFille" min="0" class="form-input" required>
             </div>
             <div class="form-group">
                 <label for="mdp" class="form-label">Nombre de Garcon</label>
-                <input type="number" id="nbrgarcon" name="nombreGarcon" class="form-input" required>
+                <input type="number" id="nbrgarcon" name="nombreGarcon" min="0" class="form-input" required>
             </div>
             <div class="form-group">
                 <label for="mdp" class="form-label">Depot</label>

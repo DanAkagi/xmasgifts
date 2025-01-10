@@ -16,7 +16,7 @@ class Cadeau {
     public function chercherCadeau($nombreFille, $nombreGarcon) {
 
         $cadeaux = array(array()); 
-        $query = "SELECT * FROM cadeau WHERE categorieCadeau = ? :cat OR categorieCadeau = :neutre";
+        $query = "SELECT * FROM cadeau WHERE categorieCadeau = :cat OR categorieCadeau = :neutre";
 
         if($nombreGarcon == 0 && $nombreFille == 0){
             return $message = 'Il faut au moins un enfant pour avoir des cadeaux.';
@@ -25,15 +25,15 @@ class Cadeau {
         if($nombreGarcon > 0) {
             $cat = 'garcon';
             $stmt = $this->db->prepare($query);
-            $stmt->execute(['cat' => $cat , 'neutre' => 'neutre']);
-            $cadeaux[$cat] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $stmt->execute(['cat' => $cat, 'neutre' => 'neutre']);
+            $cadeaux[$cat][] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }
 
         if($nombreFille > 0){
             $cat = 'fille';
             $stmt = $this->db->prepare($query);
             $stmt->execute(['cat' => $cat , 'neutre' => 'neutre']);
-            $cadeaux[$cat] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $cadeaux[$cat][] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }
 
         return $cadeaux;
