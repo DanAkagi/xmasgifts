@@ -20,21 +20,20 @@ class CadeauController {
     }
 
     public function acheterCadeaux(){
-        $cadeaux = Flight::request()->data->$idUser;
         $cadeaux = $_SESSION['panier'];
 
-        $checkSolde = Flight::Cadeau()->checkSolde($idUser, $cadeaux);
+        $checkSolde = Flight::Cadeau()->checkSolde($cadeaux);
 
         if(!empty($checkSolde)){            
             Flight::render('recevoirCadeau', ['error_message' => $checkSolde]);
         } else {
-            Flight::Cadeau()->acheterCadeaux($idUser, $cadeaux);
+            Flight::Cadeau()->acheterCadeaux($cadeaux);
             Flight::render('recevoirCadeau', ['listeCadeaux' => $cadeaux]);
         }
     }
 
-    public function ajouterPanier($idUser, $cadeaux){
-        Flight::Cadeau()->ajouterPanier($idUser, $cadeaux);
+    public function ajouterPanier($idCadeaux){
+        Flight::Cadeau()->ajouterPanier($idCadeaux);
         Flight::render('recevoirCadeau', ['listeCadeaux' => $cadeaux]);
     }
 }

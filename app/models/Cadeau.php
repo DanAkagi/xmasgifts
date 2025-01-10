@@ -40,7 +40,7 @@ class Cadeau {
 
     }
 
-    public function checkSolde($idUser, $cadeaux){
+    public function checkSolde($cadeaux){
         $sumPrix = 0;
         $query = "SELECT prix FROM cadeau WHERE idCadeau = ? :idCadeau";
         foreach($cadeaux as $cad){
@@ -51,7 +51,7 @@ class Cadeau {
 
         $query = "SELECT depot FROM user WHERE idUser = :idUser";
         $stmt = $this->db->prepare($query);
-        $stmt->execute(['idUser' => $idUser]);
+        $stmt->execute(['idUser' => $_SESSION['user_id']]);
         $solde = $stmt['depot'];
 
         if(sumPrix > $solde){
@@ -59,7 +59,7 @@ class Cadeau {
         }
     }
 
-    public function acheterCadeaux ($idUser, $cadeaux){
+    public function acheterCadeaux ($cadeaux){
         $sumPrix = 0;
         $query = "SELECT prix FROM cadeau WHERE idCadeau = ? :idCadeau";
         foreach($cadeaux as $cad){
@@ -70,14 +70,14 @@ class Cadeau {
 
         $query = "UPDATE user SET depot = (depot - :sum) WHERE idUser = :idUser";
         $stmt = $this->db->prepare($query);
-        $stmt->execute(['idUser' => $idUser, 'sum' => $sumPrix]);
+        $stmt->execute(['idUser' => $_SESSION['user_id'], 'sum' => $sumPrix]);
         $_SESSION['panier'] = [];
 
     }
 
     
-    public function ajouterPanier($idUser, $cadeau){
-        array_push($_SESSION['panier'], $cadeau);
+    public function ajouterPanier($idCadeau){
+        array_push($_SESSION['panier'], $idCadeau);
     }
 
 
