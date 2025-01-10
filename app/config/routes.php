@@ -10,6 +10,11 @@ use app\controllers\RegisterController;
 use flight\Engine;
 use flight\net\Router;
 
+
+session_start();
+$_SESSION['user_id'];
+$_SESSION['username'];
+
 $ds = DIRECTORY_SEPARATOR;
 
 /** 

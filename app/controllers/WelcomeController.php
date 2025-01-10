@@ -21,8 +21,6 @@ class WelcomeController {
 
         // Comparaison directe car les mots de passe sont en texte brut
         if ($password === $user['mdp']) {
-            // Créer la session
-            session_start();
             $_SESSION['user_id'] = $user['idUser'];
             $_SESSION['username'] = $user['nomUser'];
             

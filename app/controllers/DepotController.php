@@ -14,7 +14,7 @@ class DepotController {
         $id = Flight::request()->data->id;
         $montant = Flight::request()->data->montant;
 
-        Flight::Depot()->effectuerDepot($id, $montant);
+        Flight::Depot()->effectuerDepot($montant);
     }
 
     public function getDepotEnAttente(){
@@ -27,7 +27,7 @@ class DepotController {
         $montant = Flight::request()->data->montant;
 
         Flight::Depot()->accepterDepot($id, $montant);
-        $listeDepots = Flight::Depot()->getDepotEnAttente($id, $montant);
+        $listeDepots = Flight::Depot()->getDepotEnAttente($montant);
         Flight::render('depotEnAttente', ['listeDepots' => $listeDepots]);
     }
 

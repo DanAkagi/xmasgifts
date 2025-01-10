@@ -15,8 +15,8 @@ class Formulaire {
 
     // Bénéfice total par véhicule
     public function appliquerInfoFormulaire($nombreFille, $nombreGarçon, $montant) {
-        $cadeaux = Fligth::Cadeau()->chercherCadeau($nombreFille, $nombreGarçon);
-        Flight::Depot()->effectuerDepot($id, $montant);
+        $cadeaux = Flight::Cadeau()->chercherCadeau($nombreFille, $nombreGarçon);
+        Flight::Depot()->effectuerDepot($montant);
         return $cadeaux;
 
     }

@@ -14,7 +14,7 @@ CREATE TABLE user (
     idUser INT AUTO_INCREMENT PRIMARY KEY,
     nomUser VARCHAR(255) NOT NULL,
     mdp VARCHAR(255) NOT NULL,
-    depot FLOAT
+    depot FLOAT DEFAULT(0)
 );
 
 CREATE TABLE depot(

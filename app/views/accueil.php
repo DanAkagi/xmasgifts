@@ -1,3 +1,7 @@
+<?php
+$categorie = ["garcon", "fille"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,17 +25,21 @@
 
     <!-- Section des cadeaux -->
     <div class="cadeaux-container">
-        <?php 
-        foreach($datacadeau as $datacadeau_val){
+        <?php
+        foreach($categorie as $cat){
+            if(!empty($cadeaux[$cat])){
+                foreach($cadeaux as $cadeau){
         ?>
             <div class="cadeau-item">
-                <img src="<?php echo $datacadeau_val['image_url']; ?>" alt="image de cadeau" class="cadeau-image">
-                <p>Nom:<?php echo $datacadeau_val['nomCadeau']; ?></p>
-                <p>Genre:<?php echo $datacadeau_val['categorieCadeau']; ?></p>
-                <p>Prix:<?php echo $datacadeau_val['prix']; ?></p>
+                <img src="<?php echo $cadeau['image_url']; ?>" alt="image de cadeau" class="cadeau-image">
+                <p>Nom:<?php echo $cadeau['nomCadeau']; ?></p>
+                <p>Genre:<?php echo $cadeau['categorieCadeau']; ?></p>
+                <p>Prix:<?php echo $cadeau['prix']; ?></p>
                 <button class="ajouter-btn">Ajouter</button>
             </div>
         <?php
+                }
+            }
         }
         ?>
     </div>

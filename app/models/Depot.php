@@ -12,11 +12,11 @@ class Depot {
     }
 
     // Bénéfice total par véhicule
-    public function effectuerDepot($id, $montant) {
+    public function effectuerDepot($montant) {
         $query = "INSERT INTO depot (idUser, montant) VALUES ( :id, :montant)";
         
         $stmt = $this->db->prepare($query);
-        $stmt->execute(['id' => $id, 'montant' => $montant]);
+        $stmt->execute(['id' => $_SESSION['user_id'], 'montant' => $montant]);
     }
 
     public function getDepotEnAttente(){
@@ -29,16 +29,16 @@ class Depot {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function accepterDepot($id, $montant) {
+    public function accepterDepot($montant) {
         //Confirmer que l'utilisateur a fait un dépôt
         $query = "UPDATE user SET depot = (depot + :montant) WHERE idUser = :id";
         $stmt = $this->db->prepare($query);
-        $stmt->execute(['id' => $id, 'montant' => $montant]);
+        $stmt->execute(['id' => $_SESSION['user_id'], 'montant' => $montant]);
 
         //Supprime le dépôt de la liste d'attente
-        $query = "DELETE FROM depot WHERE idUser = :id AND montant = :montant";
+        $query = "DELETE FROM depot WHERE idUser = :id";
         $stmt = $this->db->prepare($query);
-        $stmt->execute(['id' => $id, 'montant' => $montant]);
+        $stmt->execute(['id' => $_SESSION['user_id']]);
     }
 
 
