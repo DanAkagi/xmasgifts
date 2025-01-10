@@ -4,6 +4,8 @@ namespace app\models;
 use flight\Engine;
 use Flight;
 
+session_start();
+
 class Cadeau {
     private $db;
 
@@ -70,7 +72,13 @@ class Cadeau {
         $query = "UPDATE user SET depot = (depot - :sum) WHERE idUser = :idUser";
         $stmt = $this->db->prepare($query);
         $stmt->execute(['idUser' => $idUser, 'sum' => $sumPrix]);
+        $_SESSION['panier'] = [];
 
+    }
+
+    
+    public function ajouterPanier($idUser, $cadeau){
+        array_push($_SESSION['panier'], $cadeau);
     }
 
 

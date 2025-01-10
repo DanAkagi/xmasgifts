@@ -5,6 +5,8 @@ use app\models\Cadeau;
 use flight\Engine;
 use Flight;
 
+session_start();
+
 class CadeauController {
 
     public function __construct() {
@@ -20,7 +22,7 @@ class CadeauController {
 
     public function acheterCadeaux(){
         $cadeaux = Flight::request()->data->$idUser;
-        $cadeaux = Flight::request()->data->$cadeaux;
+        $cadeaux = $_SESSION['panier'];
 
         $checkSolde = Flight::Cadeau()->checkSolde($idUser, $cadeaux);
 
@@ -30,5 +32,10 @@ class CadeauController {
             Flight::Cadeau()->acheterCadeaux($idUser, $cadeaux);
             Flight::render('recevoirCadeau', ['listeCadeaux' => $cadeaux]);
         }
+    }
+
+    public function ajouterPanier($idUser, $cadeaux){
+        Flight::Cadeau()->ajouterPanier($idUser, $cadeaux);
+        Flight::render('recevoirCadeau', ['listeCadeaux' => $cadeaux]);
     }
 }
