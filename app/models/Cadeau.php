@@ -26,14 +26,14 @@ class Cadeau {
             $cat = 'garcon';
             $stmt = $this->db->prepare($query);
             $stmt->execute(['cat' => $cat, 'neutre' => 'neutre']);
-            $cadeaux[$cat][] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $cadeaux[$cat] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }
 
         if($nombreFille > 0){
             $cat = 'fille';
             $stmt = $this->db->prepare($query);
             $stmt->execute(['cat' => $cat , 'neutre' => 'neutre']);
-            $cadeaux[$cat][] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $cadeaux[$cat] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }
 
         return $cadeaux;

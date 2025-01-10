@@ -28,7 +28,7 @@ $categorie = ["garcon", "fille"];
         <?php
         foreach($categorie as $cat){
             if(!empty($cadeaux[$cat])){
-                foreach($cadeaux as $cadeau){
+                foreach($cadeaux[$cat] as $cadeau){
         ?>
             <div class="cadeau-item">
                 <img src="<?php echo $cadeau['image_url']; ?>" alt="image de cadeau" class="cadeau-image">
